@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="WazSmoothStreamingPlayer" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="1" osVersion="*">
+  <Role name="WebRole">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="DataConnectionString" value="YOURCONNECTIONSTRING" />
+      <Setting name="CdnHost" value="YOURCDNHOST" /> <!-- e.g. azXXXXX.vo.msecnd.net -->
+    </ConfigurationSettings>
+  </Role>
+</ServiceConfiguration>

@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+	<link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/fancybox/jquery.fancybox-1.3.1.css")" />
+	<link href="http://ajax.microsoft.com/ajax/jquery.ui/1.8.5/themes/redmond/jquery-ui.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.2.min.js"></script>
+	<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery.ui/1.8.11/jquery-ui.min.js"></script>
+    <script src="@Url.Content("~/Scripts/jquery.tmpl.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/knockout-1.2.1.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/knockout.mapping-latest.js")" type="text/javascript"></script>
+	<script type="text/javascript" src="@Url.Content("~/Content/fancybox/jquery.easing-1.3.pack.js")"></script>
+	<script type="text/javascript" src="@Url.Content("~/Content/fancybox/jquery.fancybox-1.3.1.pack.js")"></script>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/modernizr-1.7.min.js")" type="text/javascript"></script>
+</head>
+
+<body>
+    <h1>Smooth Streaming with the Windows Azure CDN</h1>
+    <div id="container">
+        @RenderBody()
+    </div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Smooth Streaming with the Windows Azure CDN";
+}
+
+<ul id="videolist" data-bind="template: 'videoTemplate'">
+</ul>
+
+<script id="videoTemplate" type="text/html">
+    {{each videos}}
+        <li class="${$index == 0 ? 'first' : ''}">
+            <a href="/home/show/${id}">
+                <div class="video">
+                    <img src="${thumbnail}" />
+                    <p class="title">${id}</p>
+                    <div style="clear:both"></div>
+                </div>
+            </a>
+        </li>
+    {{/each}}
+</script>
+
+<script id="videoTemplate.old" type="text/html">
+{{if $item.first === $data }}
+    <li class="first">
+{{else}}
+    <li>
+{{/if}}
+        <a href="/home/show/${id}">
+            <div class="video">
+                    <img src="${thumbnail}" />
+                    <p class="title">${id}</p>
+                    <div style="clear:both"></div>
+            </div>
+        </a>
+    </li>
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        var mapping = {
+            'videos': {
+                key: function (data) {
+                    return ko.utils.unwrapObservable(data.id);
+                }
+            }
+        };
+        var viewModel = null;
+        function loadVideos() {
+            $.post('/api/videos', null, function (data) {
+                if (viewModel === null) {
+                    viewModel = ko.mapping.fromJS(data, mapping);
+                    ko.applyBindings(viewModel);
+                } else {
+                    ko.mapping.fromJS(data, viewModel);
+                }
+                $("#videolist a").fancybox({
+                    'type': 'iframe',
+                    'transitionIn': 'elastic',
+                    'easingIn': 'easeOutBack',
+                    'overlayColor': 'black',
+                    'overlayOpacity': 0.4
+                });
+            });
+        }
+        loadVideos();
+        window.setInterval(loadVideos, 5000);
+    });
+</script>

@@ -1,0 +1,91 @@
+﻿@model WebRole.Models.Video
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+
+<head>
+    <title>video</title>
+    <style type="text/css">
+    html, body 
+    {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+    }
+    #silverlightControlHost {
+        height: 100%;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="silverlightControlHost">
+        <object data="data:application/x-silverlight," type="application/x-silverlight" width="100%" height="100%">
+            <param name="source" value="@Url.Content("~/Content/MediaPlayerTemplate.xap")"/>
+            <param name="onerror" value="onSilverlightError" />
+            <param name="autoUpgrade" value="true" />
+            <param name="minRuntimeVersion" value="4.0.50826.0" />
+            <param name="enableHtmlAccess" value="true" />
+
+            <param name="enableGPUAcceleration" value="true" />
+
+            <param name="initparams" value='playerSettings = 
+                        <Playlist>
+                            <AutoLoad>false</AutoLoad>
+                            <AutoPlay>true</AutoPlay>
+                            <AutoRepeat>false</AutoRepeat>
+                            <DisplayTimeCode>false</DisplayTimeCode>
+                            <EnableOffline>false</EnableOffline>
+                            <EnablePopOut>false</EnablePopOut>
+
+                            <EnableCaptions>true</EnableCaptions>
+                            <EnableCachedComposition>true</EnableCachedComposition>
+                            <StretchNonSquarePixels>StretchToFill</StretchNonSquarePixels>
+                            <StartMuted>false</StartMuted>
+                            <StaysFullScreenWhenUnfocused>true</StaysFullScreenWhenUnfocused>
+
+                            <StartWithPlaylistShowing>false</StartWithPlaylistShowing>
+
+
+                            <Items>
+                                
+								<PlaylistItem>
+									<AudioCodec></AudioCodec>
+									<Description></Description>
+									<FileSize>1339891</FileSize>
+									<IsLive>false</IsLive>
+									<IsAdaptiveStreaming>true</IsAdaptiveStreaming>
+									<MediaSource>@Model.url</MediaSource>
+									<!--<ThumbSource>@Model.thumbnail</ThumbSource>-->
+									<Title>@(Path.GetFileNameWithoutExtension(new Uri(Model.url).Segments.Last(s => s != "Manifest").TrimEnd('/')))</Title>
+									<DRM>false</DRM>
+									<VideoCodec>VC1</VideoCodec>
+									<FrameRate>15.000015000015</FrameRate>
+									<Width>1152</Width>
+									<Height>720</Height>
+									<AspectRatioWidth>1.6</AspectRatioWidth>
+									<AspectRatioHeight>1</AspectRatioHeight>
+								</PlaylistItem>
+                            </Items>
+                        </Playlist>'/>
+
+             <div onmouseover="highlightDownloadArea(true)" onmouseout="highlightDownloadArea(false)">
+                    <img src="@Model.thumbnail" style="position:absolute;width:100%;height:100%;border-style:none;" onerror="this.style.display='none'"/>
+                    <img src="@Url.Content("~/Content/Preview.png")" style="position:absolute;width:100%;height:100%;border-style:none;" onerror="this.style.display='none'"/>                                            
+                    <div id="overlay" class="fadeLots" style="position:absolute;width:100%;height:100%;border-style:none;background-color:white;"/>
+                    <table width="100%" height="100%" style="position:absolute;">
+                        <tr><td align="center" valign="middle"><img src="http://go2.microsoft.com/fwlink/?LinkId=108181" alt="Get Microsoft Silverlight"/></td></tr>
+                    </table>                   
+                    <a href="http://go2.microsoft.com/fwlink/?LinkID=149156">
+                        <img src="" class="fadeCompletely" style="position:absolute;width:100%;height:100%;border-style:none;" alt="Get Microsoft Silverlight"/>
+                    </a>                   
+             </div>             
+        </object>
+    </div>
+</body> 
+</html>

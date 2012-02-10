@@ -15,6 +15,7 @@
     </Imports>
     <ConfigurationSettings>
       <Setting name="DataConnectionString" />
+      <Setting name="ContainerName" />
       <Setting name="CdnHost" />
     </ConfigurationSettings>
   </WebRole>

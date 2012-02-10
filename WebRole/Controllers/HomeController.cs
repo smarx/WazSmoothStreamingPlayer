@@ -19,7 +19,7 @@ namespace WebRole.Controllers
 
         public ActionResult Show(string id)
         {
-            var container = CloudStorageAccount.Parse(RoleEnvironment.GetConfigurationSettingValue("DataConnectionString")).CreateCloudBlobClient().GetContainerReference("videos");
+            var container = CloudStorageAccount.Parse(RoleEnvironment.GetConfigurationSettingValue("DataConnectionString")).CreateCloudBlobClient().GetContainerReference(RoleEnvironment.GetConfigurationSettingValue("ContainerName"));
 
             return View(new Video {
                 url = new UriBuilder(container.GetBlobReference(id + ".ism/Manifest").Uri) { Host = RoleEnvironment.GetConfigurationSettingValue("CdnHost") }.Uri.AbsoluteUri,

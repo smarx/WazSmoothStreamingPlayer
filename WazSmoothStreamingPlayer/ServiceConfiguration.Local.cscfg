@@ -4,6 +4,7 @@
     <Instances count="1" />
     <ConfigurationSettings>
       <Setting name="DataConnectionString" value="YOURCONNECTIONSTRING" />
+      <Setting name="ContainerName" value="videos" />
       <Setting name="CdnHost" value="YOURCDNHOST" /> <!-- e.g. azXXXXX.vo.msecnd.net -->
     </ConfigurationSettings>
   </Role>
